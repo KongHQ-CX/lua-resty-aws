@@ -33,6 +33,7 @@ local ALGORITHM = "AWS4-HMAC-SHA256"
 --          provided, and not be overridden by the generated ones
 -- tbl.body: string, defaults to ""
 -- tbl.tls: defaults to true (if nil)
+-- tbl.ssl_verify: defaults to true (if nil)
 -- tbl.port: defaults to 443 or 80 depending on 'tls'
 -- tbl.timestamp: number defaults to 'ngx.time()''
 -- tbl.global_endpoint: if true, then use "us-east-1" as signing region and different
@@ -72,6 +73,12 @@ local function prepare_awsv4_request(config, request_data)
   end
 
   local tls = config.tls
+  local ssl_verify = config.ssl_verify
+  local proxy_opts = {
+    http_proxy = config.http_proxy,
+    https_proxy = config.https_proxy,
+    no_proxy = config.no_proxy,
+  }
 
   local host = request_data.host
   local port = request_data.port
@@ -179,6 +186,8 @@ local function prepare_awsv4_request(config, request_data)
     host = host,    -- "lambda.us-east-1.amazon.com"
     port = port,    -- 443
     tls = tls,      -- true
+    ssl_verify = ssl_verify, -- true
+    proxy_opts = proxy_opts, -- table
     path = path or canonicalURI,             -- "/some/path"
     method = request_method,  -- "GET"
     query = query or canonical_querystring,  -- "query1=val1"

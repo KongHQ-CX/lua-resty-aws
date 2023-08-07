@@ -167,10 +167,6 @@ Release process:
 
 - fix: fix AWS_CONTAINER_CREDENTIALS_FULL_URI parsing.
   [#65](https://github.com/Kong/lua-resty-aws/pull/65)
-- feat: support configure timeout on service request.
-  [#67](https://github.com/Kong/lua-resty-aws/pull/67)
-- feat: support configure keepalive idle time on service request connection.
-  [#67](https://github.com/Kong/lua-resty-aws/pull/67)
 - feat: support configure ssl verify on service request.
   [#67](https://github.com/Kong/lua-resty-aws/pull/67)
 - feat: add http/https proxy support for service request
