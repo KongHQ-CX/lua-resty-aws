@@ -163,6 +163,21 @@ Release process:
 1. upload using: `VERSION=x.y.z APIKEY=abc... make upload`
 1. test installing the rock from LuaRocks
 
+### Unreleased
+
+- fix: fix AWS_CONTAINER_CREDENTIALS_FULL_URI parsing.
+  [#65](https://github.com/Kong/lua-resty-aws/pull/65)
+- feat: support configure timeout on service request.
+  [#67](https://github.com/Kong/lua-resty-aws/pull/67)
+- feat: support configure keepalive idle time on service request connection.
+  [#67](https://github.com/Kong/lua-resty-aws/pull/67)
+- feat: support configure ssl verify on service request.
+  [#67](https://github.com/Kong/lua-resty-aws/pull/67)
+- feat: add http/https proxy support for service request
+  [#69](https://github.com/Kong/lua-resty-aws/pull/69)
+- fix: fix proxy-related global config var name to lowercase.
+  [#70](https://github.com/Kong/lua-resty-aws/pull/70)
+
 ### 1.2.3 (20-Jul-2023)
 
 - fix: fix assumeRole function name on STS.
