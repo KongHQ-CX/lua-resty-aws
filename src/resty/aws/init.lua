@@ -15,7 +15,7 @@ local tablex = require("pl.tablex")
 local lookup_helper = function(self, key)  -- signature to match __index meta-method
   if type(key) == "string" then
     local lckey = key:lower()
-    for k,v in pairs(self) do
+    for k in pairs(self) do
       if type(k) == "string" and k:lower() == lckey then
         error(("key '%s' not found, did you mean '%s'?"):format(key, k), 2)
       end
@@ -193,7 +193,7 @@ do
   -- @param service service-instance being created; field `aws` is the aws instance,
   -- `config` is the service instance config, `api` the service api.
   function AWS.configureEndpoint(service)
-    for i, key in ipairs(derivedKeys(service)) do
+    for _, key in ipairs(derivedKeys(service)) do
 
       local region_rule_config = aws_config.region.rules[key]  --> contains regions templates
       if type(region_rule_config) == 'string' then
@@ -354,6 +354,9 @@ local function generate_service_methods(service)
 
       --print(require("pl.pretty").write(signed_request))
 
+      if self.config.dry_run then
+        return signed_request
+      end
       -- execute the request
       local response, err = execute_request(signed_request)
       if not response then

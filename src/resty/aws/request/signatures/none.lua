@@ -22,6 +22,7 @@
 --     hostname template: see https://github.com/aws/aws-sdk-js/blob/ae07e498e77000e55da70b20996dc8fd2f8b3051/lib/region_config_data.json
 local function prepare_request(config, request_data)
   local tls = config.tls
+  local ssl_verify = config.ssl_verify
   local host = request_data.host
   local port = request_data.port
   local timestamp = ngx.time()
