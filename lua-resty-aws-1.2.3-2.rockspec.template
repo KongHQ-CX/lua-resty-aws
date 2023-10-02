@@ -1,6 +1,6 @@
 local package_name = "lua-resty-aws"
-local package_version = "dev"
-local rockspec_revision = "1"
+local package_version = "1.2.3"
+local rockspec_revision = "2"
 local github_account_name = "Kong"
 local github_repo_name = package_name
 local git_checkout = package_version == "dev" and "main" or package_version
