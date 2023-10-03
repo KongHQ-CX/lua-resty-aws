@@ -41,7 +41,7 @@ $(target_rock):
 	cd /tmp/random_dir_2cs4f0tghRT; cat lua-resty-aws/lua-resty-aws-dev-1.rockspec | sed "s/package_version = \"dev\"/package_version = \"${VERSION}\"/" > lua-resty-aws-${VERSION}-1.rockspec
 	cd /tmp/random_dir_2cs4f0tghRT; zip -r lua-resty-aws-${VERSION}-1.src.rock lua-resty-aws-${VERSION}-1.rockspec
 	mv /tmp/random_dir_2cs4f0tghRT/lua-resty-aws-${VERSION}-1.src.rock ./
-	-@rm lua-resty-aws-${VERSION}-1.rockspec
+	-@rm lua-resty-aws-${VERSION}-2.rockspec
 	mv /tmp/random_dir_2cs4f0tghRT/lua-resty-aws-${VERSION}-1.rockspec ./
 
 pack: $(target_rock)
